@@ -20,4 +20,17 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
+	public function index()
+	{
+		$users = DB::table('users')->get();
+
+		foreach ($users as $user)
+		{
+		    var_dump($user);
+		}
+
+///		var_dump($results);
+		//return View::make('home.index');
+	}
+
 }

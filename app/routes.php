@@ -16,4 +16,10 @@ Route::get('/', function()
 	return View::make('users.signin');
 });
 
+
+Route::get('test', 'HomeController@index');
+
+
 Route::get('signin', 'UserController@signin');
+
+Route::resource('nerds', 'NerdController');
