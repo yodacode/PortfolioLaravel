@@ -17,7 +17,7 @@
 				</ul>			
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<?php echo link_to_action('UserController@signin', 'Signin', $parameters = array(), $attributes = array()); ?>
+						{{ link_to_action('UserController@signin', 'Connexion', $parameters = array(), $attributes = array()); }}
 					</li>
 				</ul>
 			</section>
@@ -26,7 +26,6 @@
         <div class="container">
             @yield('content')
         </div>
-
 
         <!--SCRIPT-->
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
