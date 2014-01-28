@@ -13,5 +13,7 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('users.signin');
 });
+
+Route::get('signin', 'UserController@signin');
