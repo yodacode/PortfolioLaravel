@@ -16,9 +16,18 @@
 					</li>
 				</ul>			
 				<ul class="nav navbar-nav navbar-right">
-					<li>
-						{{ link_to_action('UserController@signin', 'Connexion', $parameters = array(), $attributes = array()); }}
-					</li>
+					@if(!Auth::check())
+						<li>
+							{{ link_to_action('UsersController@getLogin', 'Login', $parameters = array(), $attributes = array()); }}
+						</li>
+						<li>
+							{{ link_to_action('UsersController@getRegister', 'Register', $parameters = array(), $attributes = array()); }}
+						</li>
+					@else
+						<li>							
+							{{ link_to_action('UsersController@getLogout', 'Logout', $parameters = array(), $attributes = array()); }}
+						</li>
+					@endif
 				</ul>
 			</section>
 		</header>
