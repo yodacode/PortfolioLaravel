@@ -30,7 +30,10 @@
 					@endforeach
 				</td>				
 				<td>{{ $value->description }}</td>
-				<td><a class="btn btn-small btn-info" href="{{ URL::to('posts/' . $value->id . '/edit') }}">Edit</a></td>
+				<td>
+					<a class="btn btn-small btn-info btn-sm" href="{{ URL::to('posts/' . $value->id . '/edit') }}"><span class="glyphicon glyphicon-pencil"></span></a>
+					<a class="btn btn-small btn-danger btn-sm" href="{{ URL::to('posts/' . $value->id . '/destroy') }}"><span class="glyphicon glyphicon-remove"></span></a>
+				</td>
 
 			</tr>
 		@endforeach

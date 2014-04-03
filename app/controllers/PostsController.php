@@ -24,8 +24,10 @@ class PostsController extends BaseController {
 	 * @return Response
 	 */
 	public function create()
-	{
-		return 'create';		
+	{		
+		$categories = Category::lists('title', 'id');
+		return View::make('posts.create')			
+			->with('categories', $categories);
 	}
 
 	/**
@@ -36,7 +38,25 @@ class PostsController extends BaseController {
 	public function store()
 	{
 		//
-		return 'store';
+		$validator = Validator::make(Input::all(), Post::$rules);
+
+		// process the login
+		if ($validator->fails()) {
+			return Redirect::to('posts/create')
+				->withErrors($validator);				
+		} else {
+			// store
+			$post = new Post;
+			$post->title = Input::get('title');
+			$post->url = Input::get('url');
+			$post->description = Input::get('description');
+			$post->category_id = Input::get('categories');			
+			$post->save();
+
+			// redirect
+			Session::flash('message', 'Successfully created post!');
+			return Redirect::to('posts');
+		}
 	}
 
 	/**
@@ -106,7 +126,13 @@ class PostsController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		// delete
+		$post = Post::find($id);
+		$post->delete();
+
+		// redirect
+		Session::flash('message', 'Successfully deleted the post!');
+		return Redirect::to('posts');
 	}
 
 }
