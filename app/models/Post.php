@@ -5,6 +5,12 @@ class Post extends Eloquent
 
 	protected $fillable = array('title', 'url', 'description');
 
+	public static $rules = array(
+	    'title'=>'required',
+	    'url'=>'required',
+	    'description'=>'required',
+ 	);
+
 	// each post has many categories
 	public function category() {
 		return $this->belongsTo('Category');

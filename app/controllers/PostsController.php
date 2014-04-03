@@ -14,7 +14,7 @@ class PostsController extends BaseController {
 	 */
 	public function index()
 	{
-		$posts = Post::all();		
+		$posts = Post::all();	
 		$this->layout->content = View::make('posts.index')->with('posts', $posts);
 	}
 
@@ -36,6 +36,7 @@ class PostsController extends BaseController {
 	public function store()
 	{
 		//
+		return 'store';
 	}
 
 	/**
@@ -47,6 +48,7 @@ class PostsController extends BaseController {
 	public function show($id)
 	{
 		//
+		return 'show';
 	}
 
 	/**
@@ -57,7 +59,16 @@ class PostsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		// get the post
+		$post = Post::find($id);
+		//$categories = Category::all();
+		$categories = Category::lists('title', 'id');		
+
+		
+		// show the edit form and pass the post
+		return View::make('posts.edit')
+			->with('post', $post)
+			->with('categories', $categories);
 	}
 
 	/**
@@ -68,7 +79,23 @@ class PostsController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$validator = Validator::make(Input::all(), Post::$rules);
+
+		if ($validator->fails()) {			
+			return Redirect::to('posts/' . $id . '/edit')
+				->withErrors($validator);				
+		} else {
+			$post = Post::find($id);
+			$post->title = Input::get('title');
+			$post->url = Input::get('url');
+			$post->description = Input::get('description');
+			$post->category_id = Input::get('categories');			
+			$post->save();
+
+			//redirect
+			Session::flash('message', 'Successfuly updated post !');
+			return Redirect::to('posts');
+		}
 	}
 
 	/**

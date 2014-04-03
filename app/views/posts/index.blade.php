@@ -3,17 +3,18 @@
 
 @section('content')
 	<div class="page-header">
-		<h1>Listing des nerds</h1>
+		<h1>Posts</h1>			
 	</div>
-	<table class="table table-striped table-bordered">
+	<table class="table table-striped">
 		<thead>
 			<tr>
-				<td>ID</td>
-				<td>Title</td>
-				<td>URL</td>
-				<td>tags</td>
-				<td>Categorie</td>
-				<td>Description</td>
+				<th>ID</td>
+				<th>Title</th>
+				<th>URL</th>
+				<th>Category</th>
+				<th>Tags</th>
+				<th>Description</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -25,10 +26,12 @@
 				<td>{{ $value->category->title }}</td>
 				<td>
 					@foreach ($value->tags as $tag)
-						{{ $tag->title }}
+						<span class="label label-default">{{ $tag->title }}</span>
 					@endforeach
 				</td>				
 				<td>{{ $value->description }}</td>
+				<td><a class="btn btn-small btn-info" href="{{ URL::to('posts/' . $value->id . '/edit') }}">Edit</a></td>
+
 			</tr>
 		@endforeach
 		</tbody>
