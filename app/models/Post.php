@@ -6,8 +6,8 @@ class Post extends Eloquent
 	protected $fillable = array('title', 'url', 'description');
 
 	// each post has many categories
-	public function categories() {
-		return $this->hasMany('Category');
+	public function category() {
+		return $this->belongsTo('Category');
 	}
 
 	// each post BELONGS to many tag

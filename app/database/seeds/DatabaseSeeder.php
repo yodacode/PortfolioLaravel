@@ -31,23 +31,35 @@ class PortfolioAppSeeder extends Seeder {
 		DB::table('tags')->delete();
 		DB::table('posts_tags')->delete();
 
+		// seed our categories table ---------------------
+		$webdesign = Category::create(array(
+			'title'    => 'webdesign',			
+		));
+		$development = Category::create(array(
+			'title'    => 'development'			
+		));
+		$this->command->info('Categories seeds finish');
+
 		// seed our posts table -----------------------
 		// we'll create three different posts
 
 		$postOne = Post::create(array(
 			'title'         => 'titre one',
 			'url'         	=> 'http://url-one.jpg',
-			'description' 	=> 'Description du projet one'
+			'description' 	=> 'Description du projet one',
+			'category_id' 	=> $webdesign->id
 		));
 		$postTwo = Post::create(array(
 			'title'         => 'titre two',
 			'url'         	=> 'http://url-two.jpg',
-			'description' 	=> 'Description du projet two'
+			'description' 	=> 'Description du projet two',
+			'category_id' 	=> $webdesign->id
 		));
 		$postThree = Post::create(array(
 			'title'         => 'titre three',
 			'url'         	=> 'http://url-three.jpg',
-			'description' 	=> 'Description du projet three'
+			'description' 	=> 'Description du projet three',
+			'category_id' 	=> $development->id
 		));
 
 		
@@ -55,17 +67,6 @@ class PortfolioAppSeeder extends Seeder {
 		$this->command->info('Posts seeds finish');
 
 
-		// seed our categories table ---------------------
-		Category::create(array(
-			'title'    => 'webdesign',
-			'post_id' => $postOne->id
-		));
-		Category::create(array(
-			'title'    => 'development',
-			'post_id' => $postOne->id
-		));
-
-		$this->command->info('Categories seeds finish');
 
 		// seed our tags table ---------------------
 
