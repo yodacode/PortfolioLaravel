@@ -1,3 +1,4 @@
+// app/database/seeds/DatabaseSeeder.php
 <?php
 
 class DatabaseSeeder extends Seeder {
@@ -11,7 +12,84 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		// $this->call('UserTableSeeder');
+		// call our class and run our seeds
+		$this->call('PortfolioAppSeeder');
+		$this->command->info('Portfolio app seeds finished.'); // show information in the command line after everything is run
+	}
+
+}
+
+// our own seeder class
+// usually this would be its own file
+class PortfolioAppSeeder extends Seeder {
+	
+	public function run() {
+
+		// clear our database ------------------------------------------
+		DB::table('posts')->delete();
+		DB::table('categories')->delete();
+		DB::table('tags')->delete();
+		DB::table('posts_tags')->delete();
+
+		// seed our posts table -----------------------
+		// we'll create three different posts
+
+		$postOne = Post::create(array(
+			'title'         => 'titre one',
+			'url'         	=> 'http://url-one.jpg',
+			'description' 	=> 'Description du projet one'
+		));
+		$postTwo = Post::create(array(
+			'title'         => 'titre two',
+			'url'         	=> 'http://url-two.jpg',
+			'description' 	=> 'Description du projet two'
+		));
+		$postThree = Post::create(array(
+			'title'         => 'titre three',
+			'url'         	=> 'http://url-three.jpg',
+			'description' 	=> 'Description du projet three'
+		));
+
+		
+
+		$this->command->info('Posts seeds finish');
+
+
+		// seed our categories table ---------------------
+		Category::create(array(
+			'title'    => 'webdesign',
+			'post_id' => $postOne->id
+		));
+		Category::create(array(
+			'title'    => 'development',
+			'post_id' => $postOne->id
+		));
+
+		$this->command->info('Categories seeds finish');
+
+		// seed our tags table ---------------------
+
+		// we will create one picnic and apply all bears to this one picnic
+		$php = Tag::create(array(
+			'title'        => 'php',
+		));
+		$javascript = Tag::create(array(
+			'title'        => 'javascript',
+		));
+		
+		// link our posts to tags ---------------------
+		// for our purposes we'll just add all bears to both tags for our many to many relationship
+		$postOne->tags()->attach($php->id);
+		$postOne->tags()->attach($javascript->id);
+
+		$postTwo->tags()->attach($php->id);
+		$postTwo->tags()->attach($javascript->id);
+
+		$postThree->tags()->attach($php->id);
+		$postThree->tags()->attach($javascript->id);
+
+		$this->command->info('Tags seeds finish');
+
 	}
 
 }
