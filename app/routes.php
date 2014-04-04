@@ -14,3 +14,4 @@
 
 Route::controller('users', 'UsersController');
 Route::resource('posts', 'PostsController');
+Route::get('posts/{idPost}/{idTag}/attach-tag', 'PostsController@attachTag');
