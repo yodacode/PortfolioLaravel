@@ -2,12 +2,12 @@
 <html>
 	<head>
 		<!--CSS-->
-		<link rel="stylesheet" href="{{ URL::asset('lib/bootstrap/css/bootstrap.min.css') }}">
-		<link rel="stylesheet" href="{{ URL::asset('lib/bootstrap/css/bootstrap-theme.min.css') }}">
+		<link rel="stylesheet" href="{{ URL::asset('lib/bootstrap/css/bootstrap-flatly.min.css') }}">
+		<link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
 		<title>Benjamin</title>
 	</head>
     <body>
-        <header class="navbar navbar-static-top bs-docs-nav navbar-inverse">
+        <header class="navbar navbar-static-top bs-docs-nav navbar-default">
           <div class="container">
             <div class="navbar-header">
               <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -62,5 +62,6 @@
         <!--SCRIPT-->
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 		<script src="{{ URL::asset('lib/bootstrap/js/bootstrap.min.js') }}"></script>
+		<script src="{{ URL::asset('js/App/App.js') }}"></script>
     </body>
 </html>

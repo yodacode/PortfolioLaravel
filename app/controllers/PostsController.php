@@ -55,7 +55,15 @@ class PostsController extends BaseController {
 			$post->url = Input::get('url');
 			$post->description = Input::get('description');
 			$post->category_id = Input::get('categories');
+			$tagsChecked = Input::get('tag');
 			$post->save();
+			//now associate the tags
+			if(is_array($tagsChecked))
+			{
+			   foreach ($tagsChecked as $id) {			   	
+			   		$post->tags()->attach($id);			   		
+			   }			   
+			}
 
 			// redirect
 			Session::flash('message', 'Successfully created post!');

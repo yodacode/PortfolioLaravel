@@ -1,0 +1,16 @@
+li {
+	list-style: none;
+}
+/******Tags******/
+.tags-list {
+	overflow: hidden;
+	padding: 0px;
+	margin: 0px;
+}
+.tags-list .item{
+	display: inline-block;
+	cursor: pointer;
+}
+.tags-list .item input[type="checkbox"]{
+	display: none;
+}
