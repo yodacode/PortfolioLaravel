@@ -23,6 +23,15 @@
 			{{ Form::label('url', 'URL') }}
 			{{ Form::text('url', null, array('class' => 'form-control')) }}
 		</div>
+		<div class="panel panel-info">
+	      
+	      <div class="panel-body">
+	        @foreach ($tags as $tag)
+				<span class="label {{{ $tag->active ? 'label-info' : 'label-default' }}}">{{ $tag->title }}</span> 
+			@endforeach
+	      </div>
+	    </div>
+		
 		<div class="form-group">
 			{{ Form::select('categories', $categories, $post->category->id, array('class' => 'form-control input-sm'))}}
 			

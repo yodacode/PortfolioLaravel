@@ -77,6 +77,12 @@ class PortfolioAppSeeder extends Seeder {
 		$javascript = Tag::create(array(
 			'title'        => 'javascript',
 		));
+		$mvc = Tag::create(array(
+			'title'        => 'mvc',
+		));
+		$html = Tag::create(array(
+			'title'        => 'html',
+		));
 		
 		// link our posts to tags ---------------------
 		// for our purposes we'll just add all bears to both tags for our many to many relationship

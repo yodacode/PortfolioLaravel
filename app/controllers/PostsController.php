@@ -82,12 +82,21 @@ class PostsController extends BaseController {
 		// get the post
 		$post = Post::find($id);
 		//$categories = Category::all();
-		$categories = Category::lists('title', 'id');		
+		$categories = Category::lists('title', 'id');
+		$tags = Tag::all();		
+
+		foreach ($tags as $tag) {
+			if ($tag->posts->find($id)) {
+				$tag->active = true;
+			}
+		}
+		Kint::dump($tags);
 
 		
 		// show the edit form and pass the post
 		return View::make('posts.edit')
 			->with('post', $post)
+			->with('tags', $tags)
 			->with('categories', $categories);
 	}
 
