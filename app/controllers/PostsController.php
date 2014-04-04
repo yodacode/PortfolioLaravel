@@ -25,8 +25,12 @@ class PostsController extends BaseController {
 	 */
 	public function create()
 	{
+
 		$categories = Category::lists('title', 'id');
+		$tags = Tag::all();
+
 		return View::make('posts.create')
+			->with('tags', $tags)
 			->with('categories', $categories);
 	}
 
@@ -81,7 +85,7 @@ class PostsController extends BaseController {
 	{
 		// get the post
 		$post = Post::find($id);
-		//$categories = Category::all();
+
 		$categories = Category::lists('title', 'id');
 		$tags = Tag::all();
 
@@ -112,6 +116,7 @@ class PostsController extends BaseController {
 			return Redirect::back();
 		}
 	}
+
 
 	/**
 	 * Update the specified resource in storage.
