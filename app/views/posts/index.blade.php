@@ -3,7 +3,7 @@
 
 @section('content')
 	<div class="page-header">
-		<h1>Posts</h1>			
+		<h1>Posts</h1>
 	</div>
 	<table class="table table-striped">
 		<thead>
@@ -28,7 +28,7 @@
 					@foreach ($value->tags as $tag)
 						<span class="label label-default">{{ $tag->title }}</span>
 					@endforeach
-				</td>				
+				</td>
 				<td>{{ $value->description }}</td>
 				<td>
 					<a class="btn btn-small btn-info btn-sm" href="{{ URL::to('posts/' . $value->id . '/edit') }}"><span class="glyphicon glyphicon-pencil"></span></a>
@@ -41,3 +41,5 @@
 	</table>
 
 @stop
+
+@include('components/sidebar')

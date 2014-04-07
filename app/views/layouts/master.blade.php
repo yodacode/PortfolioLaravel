@@ -22,10 +22,10 @@
 				<ul class="nav navbar-nav">
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Posts <b class="caret"></b></a>
-						<ul class="dropdown-menu">					
-							
+						<ul class="dropdown-menu">
+
 							<li>{{ link_to_action('PostsController@index', 'Posts');}}</li>
-							<li><a href="#">Tags</a></li>
+							<li>{{ link_to_action('TagsController@index', 'Tags');}}</li>
 							<li><a href="#">Categories</a></li>
 							<li class="divider"></li>
 							<li>{{ link_to_action('PostsController@create', 'Ajouter un Post');}}</li>
@@ -52,6 +52,7 @@
 
 
         <div class="container">
+
         	<!-- will be used to show any messages -->
 			@if (Session::has('message'))
 				<div class="alert alert-info">{{ Session::get('message') }}</div>
