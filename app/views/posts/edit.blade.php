@@ -28,7 +28,7 @@
 
 		      <div class="panel-body">
 		        @foreach ($tags as $tag)
-					<span class="label {{{ $tag->active ? 'label-info' : 'label-default' }}}">
+					<span class="label {{{ $tag->active ? 'label-success' : 'label-default' }}}">
 						<a href="{{ URL::to('posts/' . $post->id . '/' . $tag->id . '/attach-tag') }}" style="color:#FFF">{{ $tag->title }}</a>
 					</span>&nbsp
 				@endforeach
