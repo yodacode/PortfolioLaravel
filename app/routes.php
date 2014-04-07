@@ -20,7 +20,7 @@ Route::get('posts/{idPost}/{idTag}/attach-tag', 'PostsController@attachTag');
 Route::get('posts/{id}/destroy', 'PostsController@destroy');
 
 //Composer
-View::composer(array('posts.edit','posts.create'), function($view)//array('layouts.admin','post.*')
+View::composer(array('posts.*'), function($view)//array('layouts.admin','post.*')
 {
     $view->with('listTags', Tag::all());
 });
