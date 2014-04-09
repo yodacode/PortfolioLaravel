@@ -11,6 +11,3 @@ li {
 	display: inline-block;
 	cursor: pointer;
 }
-.tags-list .item input[type="checkbox"]{
-	display: none;
-}

@@ -24,17 +24,6 @@
 				{{ Form::label('url', 'URL') }}
 				{{ Form::text('url', null, array('class' => 'form-control')) }}
 			</div>
-			<div class="panel panel-info">
-
-		      <div class="panel-body">
-		        @foreach ($tags as $tag)
-					<span class="label {{{ $tag->active ? 'label-success' : 'label-default' }}}">
-						<a href="{{ URL::to('posts/' . $post->id . '/' . $tag->id . '/attach-tag') }}" style="color:#FFF">{{ $tag->title }}</a>
-					</span>&nbsp
-				@endforeach
-		      </div>
-		    </div>
-
 			<div class="form-group">
 				{{ Form::select('categories', $categories, $post->category->id, array('class' => 'form-control input-sm'))}}
 			</div>
@@ -42,8 +31,8 @@
 				{{ Form::label('description', 'Description') }}
 				{{ Form::textarea('description', null, array('class' => 'form-control')) }}
 			</div>
-			{{ Form::submit('Save', array('class' => 'btn btn-primary')) }}
-		</div>
+		{{ Form::submit('Save', array('class' => 'btn btn-primary')) }}
+	</div>
 
 	{{ Form::close() }}
 

@@ -78,3 +78,21 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+/*
+|--------------------------------------------------------------------------
+| View composer
+|--------------------------------------------------------------------------
+*/
+View::composer(array('posts.edit', 'posts.create'), function($view)//array('layouts.admin','post.*')
+{
+	$id = Route::getCurrentRoute()->getParameter('posts');
+	$tags = Tag::all();
+	foreach ($tags as $tag) {
+		if ($tag->posts->find($id)) {
+			$tag->active = true;
+		}
+	}
+    $view->with('listTags', $tags);
+    $view->with('countTags', Tag::count());
+});

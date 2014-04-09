@@ -60,9 +60,9 @@ class PostsController extends BaseController {
 			//now associate the tags
 			if(is_array($tagsChecked))
 			{
-			   foreach ($tagsChecked as $id) {			   	
-			   		$post->tags()->attach($id);			   		
-			   }			   
+			   foreach ($tagsChecked as $id) {
+			   		$post->tags()->attach($id);
+			   }
 			}
 
 			// redirect
@@ -96,12 +96,6 @@ class PostsController extends BaseController {
 
 		$categories = Category::lists('title', 'id');
 		$tags = Tag::all();
-
-		foreach ($tags as $tag) {
-			if ($tag->posts->find($id)) {
-				$tag->active = true;
-			}
-		}
 
 		// show the edit form and pass the post
 		return View::make('posts.edit')

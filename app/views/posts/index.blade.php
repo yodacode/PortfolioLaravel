@@ -39,7 +39,4 @@
 		@endforeach
 		</tbody>
 	</table>
-
 @stop
-
-@include('components/sidebar')

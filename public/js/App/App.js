@@ -1,12 +1,9 @@
 $(function () {
 	$('.tags-list').on('click', '.item', function () {
-		
-		var label = $(this).find('.label'),
-			checkbox = label.find('input[type=checkbox]');
+		var checkbox = $('#list-checkbox').find('#checkbox-' + $(this).attr('data-id'));
 
-		label.toggleClass('label-success');
+		$(this).toggleClass('label-success');
 		checkbox.prop("checked", !checkbox.prop("checked"));
-		
-		
+
 	});
 });

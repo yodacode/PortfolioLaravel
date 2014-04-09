@@ -1,18 +1,27 @@
 <div class="col-md-4">
 	<ul class="list-group">
-	  <li class="list-group-item">
-	    <div class="panel-body">
-	    	{{ Form::label('tags', 'Tags') }}
-	    	{{ Form::text('tags', null, array('class' => 'form-control input-sm', 'placeholder' =>  'Add Tags here')) }}
-  		</div>
-	    <div class="panel-body">
-            @foreach ($listTags as $tag)
-    			<span class="label label-default">
-    				<a href="#" style="color:#FFF">{{ $tag->title }}</a>
-    			</span>&nbsp
-    		@endforeach
-		</div>
-	  </li>
+		<li class="list-group-item">
+			<div class="panel-body">
+				{{ Form::label('tags', 'Tags') }} ({{ $countTags }})
+				{{ Form::text('tags', null, array('class' => 'form-control input-sm', 'placeholder' =>  'Add Tags here')) }}
+				</div>
+				<div class="panel-body">
+				@if (isset($post))
+					@foreach ($listTags as $tag)
+						<span class="label {{{ $tag->active ? 'label-success' : 'label-default' }}}">
+							<a href="{{ URL::to('posts/' . $post->id . '/' . $tag->id . '/attach-tag') }}" style="color:#FFF">{{ $tag->title }}</a>
+						</span>&nbsp
+					@endforeach
+				@else
+					<div class="tags-list">
+						@foreach ($tags as $tag)
+							<span  data-id="{{$tag->id}}" class="label label-default item">
+								{{ $tag->title }}
+							</span>&nbsp
+						@endforeach
+					</div>
+				@endif
+			</div>
+		</li>
 	</ul>
-
 </div>
