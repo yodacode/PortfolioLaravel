@@ -1,6 +1,11 @@
 <?php
 
-class TagsController extends \BaseController {
+class TagsController extends BaseController {
+
+	/**
+     * The layout that should be used for responses.
+     */
+    protected $layout = 'layouts.master';
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +14,8 @@ class TagsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$tags = Tag::all();
+		$this->layout->content = View::make('tags.index')->with('tags', $tags);
 	}
 
 	/**
@@ -71,9 +77,24 @@ class TagsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($id, $idPost=null)
 	{
-		//
+		
+		//detach associate posts
+		if (!is_null($idPost)) {
+			$post = Post::find($idPost);			
+			$post->tags()->detach($id);			
+		}
+
+		$tag = Tag::find($id);
+		$tag->delete();
+
+		// redirect
+		if (!is_null($idPost)) {
+			return Redirect::back();
+		} else {
+			return Redirect::to('tags');
+		}
 	}
 
 }

@@ -9,7 +9,8 @@
 				@if (isset($post))
 					@foreach ($listTags as $tag)
 						<span class="label {{{ $tag->active ? 'label-success' : 'label-default' }}}">
-							<a href="{{ URL::to('posts/' . $post->id . '/' . $tag->id . '/attach-tag') }}" style="color:#FFF">{{ $tag->title }}</a>
+							<a href="{{ URL::to('posts/' . $post->id . '/' . $tag->id . '/attach-tag') }}" style="color:#FFF">{{ $tag->title }}</a>&nbsp
+							<a href="{{ URL::to('tags/' . $tag->id . '/' . $post->id . '/destroy') }}" style="color:#FFF">x</a>
 						</span>&nbsp
 					@endforeach
 				@else
