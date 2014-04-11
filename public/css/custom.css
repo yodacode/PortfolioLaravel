@@ -11,3 +11,6 @@ li {
 	display: inline-block;
 	cursor: pointer;
 }
+.label a{
+	color: #FFF;
+}

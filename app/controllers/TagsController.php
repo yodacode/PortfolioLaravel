@@ -35,7 +35,18 @@ class TagsController extends BaseController {
 	 */
 	public function store()
 	{
-		//
+	    if (Request::ajax())
+	    {
+	        $validator = Validator::make(Input::all(), Tag::$rules);
+	        if ($validator->fails()) {
+	        	return Response::json(['response' => 'error']);
+	        } else {
+	        	$tag = new Tag;
+	        	$tag->title = Input::get('title');
+	        	$tag->save();
+	        	return Response::json($tag);
+	        }
+	    }
 	}
 
 	/**
@@ -79,11 +90,11 @@ class TagsController extends BaseController {
 	 */
 	public function destroy($id, $idPost=null)
 	{
-		
+
 		//detach associate posts
 		if (!is_null($idPost)) {
-			$post = Post::find($idPost);			
-			$post->tags()->detach($id);			
+			$post = Post::find($idPost);
+			$post->tags()->detach($id);
 		}
 
 		$tag = Tag::find($id);

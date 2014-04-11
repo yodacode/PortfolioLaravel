@@ -86,13 +86,14 @@ Route::filter('csrf', function()
 */
 View::composer(array('posts.edit', 'posts.create'), function($view)//array('layouts.admin','post.*')
 {
-	$id = Route::getCurrentRoute()->getParameter('posts');
+	$currentIdPost = Route::getCurrentRoute()->getParameter('posts');
 	$tags = Tag::all();
 	foreach ($tags as $tag) {
-		if ($tag->posts->find($id)) {
+		if ($tag->posts->find($currentIdPost)) {
 			$tag->active = true;
 		}
 	}
     $view->with('listTags', $tags);
+    $view->with('currentIdPost', $currentIdPost);
     $view->with('countTags', Tag::count());
 });

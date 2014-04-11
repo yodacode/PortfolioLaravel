@@ -1,6 +1,7 @@
 <div class="col-md-4">
-	<ul class="list-group">
-	<li class="list-group-item">
+	<ul class="list-group" id="app-sidebar" data-id-post="{{ $currentIdPost }}">
+		<li class="list-group-item app-tags">
+
 			{{ Form::label('tags', 'Tags') }} ({{ $countTags }})
 			<div class="input-group">
 				{{ Form::text('tags', null, array('class' => 'form-control input-sm app-tag-input', 'placeholder' =>  'Add Tags here')) }}
@@ -11,8 +12,8 @@
 			@if (isset($post))
 				@foreach ($listTags as $tag)
 					<span class="label {{{ $tag->active ? 'label-success' : 'label-default' }}}">
-						<a href="{{ URL::to('posts/' . $post->id . '/' . $tag->id . '/attach-tag') }}" style="color:#FFF">{{ $tag->title }}</a>&nbsp
-						<a href="{{ URL::to('tags/' . $tag->id . '/' . $post->id . '/destroy') }}" style="color:#FFF">x</a>
+						<a href="{{ URL::to('posts/' . $post->id . '/' . $tag->id . '/attach-tag') }}">{{ $tag->title }}</a>&nbsp
+						<a href="{{ URL::to('tags/' . $tag->id . '/destroy') }}">x</a>
 					</span>&nbsp
 				@endforeach
 			@else

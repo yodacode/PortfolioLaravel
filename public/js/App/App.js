@@ -12,7 +12,11 @@ $(function () {
 
 	App.Sidebar = {
 		init: function () {
+			this.sidebar = $('#app-sidebar');
+			this.currentPostId = this.sidebar.attr('data-id-post');
+
 			this.UI = {};
+			this.UI.sectionTags = $('.app-tags')
 			this.UI.input = $('.app-tag-input');
 			this.UI.btnSubmit = $('.app-tag-btn');
 
@@ -21,23 +25,40 @@ $(function () {
 		bind: function () {
 			var that = this;
 			this.UI.btnSubmit.on('click', function () {
-				console.log(that.UI.input.val())
+				console.log(that.UI.input.val());
 				that.storeTag(that.UI.input.val());
 			});
 		},
 		storeTag: function (tag) {
+			var that = this;
 			$.ajax({
 			  type: "POST",
 			  url: "/tags/store",
-			  data: {}
+			  data: {title: tag}
 			})
 			.done(function(tag) {
-				alert('success');
-				console.log(tag);
+				that.createTagLabel(tag);
 		  	})
 		  	.error(function () {
 		  		alert('error');
 		  	});
+		},
+		createTagLabel: function (tag) {
+			var span, a, aR;
+
+			span = $('<span>')
+		       	.attr('class','label label-default')
+		       	.appendTo(this.UI.sectionTags);
+
+		    a = $('<a>')
+		       	.attr('href', '/posts/' + this.currentPostId + '/' + tag.id + '/attach-tag')
+		       	.text(tag.title)
+		       	.appendTo(span);
+
+		    aR = $('<a>')
+		       	.attr('href', 'tags/' + tag.id + '/' + this.currentPostId +'/destroy')
+		       	.text(' ' + 'x')
+		       	.appendTo(span);
 		}
 	};
 	App.Sidebar.init();
