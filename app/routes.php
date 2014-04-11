@@ -18,6 +18,7 @@ Route::resource('posts', 'PostsController');
 //Tags
 Route::resource('tags', 'TagsController');
 Route::get('tags/{id}/destroy', 'TagsController@destroy');
+
 //Posts
 Route::get('posts/{idPost}/{idTag}/attach-tag', 'PostsController@attachTag');
 Route::get('posts/{id}/destroy', 'PostsController@destroy');
