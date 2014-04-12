@@ -54,7 +54,7 @@ $(function () {
 
 		    checkbox = $('<input>')
 		    	.attr({id: 'checkbox-' + tag.id, name: 'tag[]', type: 'checkbox', value: tag.id})
-		    	.appendTo(this.UI.listCheckbox);
+		    	.appendTo(this.UI.checkboxList);
 
 		}
 	};
