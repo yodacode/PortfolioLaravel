@@ -4,19 +4,14 @@ $(function () {
 
 	};
 
-	$('.tags-list').on('click', '.item', function () {
-		var checkbox = $('#list-checkbox').find('#checkbox-' + $(this).attr('data-id'));
-		$(this).toggleClass('label-success');
-		checkbox.prop("checked", !checkbox.prop("checked"));
-	});
+
 
 	App.Sidebar = {
 		init: function () {
-			this.sidebar = $('#app-sidebar');
-			this.currentPostId = this.sidebar.attr('data-id-post');
 
 			this.UI = {};
-			this.UI.sectionTags = $('.app-tags')
+			this.UI.tagList = $('.app-tags-list');
+			this.UI.checkboxList = $('.app-list-checkbox');
 			this.UI.input = $('.app-tag-input');
 			this.UI.btnSubmit = $('.app-tag-btn');
 
@@ -24,12 +19,18 @@ $(function () {
 		},
 		bind: function () {
 			var that = this;
+
 			this.UI.btnSubmit.on('click', function () {
-				console.log(that.UI.input.val());
-				that.storeTag(that.UI.input.val());
+				that.saveTag(that.UI.input.val());
+			});
+
+			this.UI.tagList.on('click', '.item', function () {
+				var checkbox = that.UI.checkboxList.find('#checkbox-' + $(this).attr('data-id'));
+				$(this).toggleClass('label-success');
+				checkbox.prop("checked", !checkbox.prop("checked"));
 			});
 		},
-		storeTag: function (tag) {
+		saveTag: function (tag) {
 			var that = this;
 			$.ajax({
 			  type: "POST",
@@ -44,21 +45,17 @@ $(function () {
 		  	});
 		},
 		createTagLabel: function (tag) {
-			var span, a, aR;
+			var span, checkbox;
 
 			span = $('<span>')
-		       	.attr('class','label label-default')
-		       	.appendTo(this.UI.sectionTags);
-
-		    a = $('<a>')
-		       	.attr('href', '/posts/' + this.currentPostId + '/' + tag.id + '/attach-tag')
+		       	.attr({'class':'label label-default item', 'data-id':tag.id})
 		       	.text(tag.title)
-		       	.appendTo(span);
+		       	.appendTo(this.UI.tagList);
 
-		    aR = $('<a>')
-		       	.attr('href', 'tags/' + tag.id + '/' + this.currentPostId +'/destroy')
-		       	.text(' ' + 'x')
-		       	.appendTo(span);
+		    checkbox = $('<input>')
+		    	.attr({id: 'checkbox-' + tag.id, name: 'tag[]', type: 'checkbox', value: tag.id})
+		    	.appendTo(this.UI.listCheckbox);
+
 		}
 	};
 	App.Sidebar.init();

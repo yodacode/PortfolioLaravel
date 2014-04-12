@@ -104,22 +104,6 @@ class PostsController extends BaseController {
 			->with('categories', $categories);
 	}
 
-	public function attachTag($idPost, $idTag) {
-
-		$post = Post::find($idPost);
-		//if already attach
-		if ($post->tags->find($idTag)) {
-			$post->tags()->detach($idTag);
-		} else {
-			$post->tags()->attach($idTag);
-		}
-
-		if (!Request::ajax()) {
-			return Redirect::back();
-		}
-	}
-
-
 	/**
 	 * Update the specified resource in storage.
 	 *
@@ -139,8 +123,26 @@ class PostsController extends BaseController {
 			$post->url = Input::get('url');
 			$post->description = Input::get('description');
 			$post->category_id = Input::get('categories');
+			$tagsChecked = Input::get('tag');
 			$post->save();
 
+
+			//now associate the tags
+			if(is_array($tagsChecked))
+			{
+				// detach all tags
+				foreach (Tag::all() as $tag) {
+					$post->tags()->detach($tag->id);
+				}
+				// attach new tags
+		   		foreach ($tagsChecked as $idChecked) {
+		   			if (is_null($post->tags->find($idChecked))) {
+		   				$post->tags()->attach($idChecked);
+		   			}
+		   		}
+
+
+			}
 			//redirect
 			Session::flash('message', 'Successfuly updated post !');
 			return Redirect::to('posts');

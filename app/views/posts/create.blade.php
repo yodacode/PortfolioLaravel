@@ -25,9 +25,9 @@
 				{{ Form::text('url', null, array('class' => 'form-control')) }}
 			</div>
 
-			<div class="form-group hidden" id="list-checkbox">
-				@foreach ($tags as $tag)
-					{{ Form::checkbox('tag[]', $tag->id, false, array('id' => 'checkbox-'.$tag->id) ) }}
+			<div class="form-group app-list-checkbox">
+				@foreach ($listTags as $tag)
+					{{ Form::checkbox('tag[]', $tag->id, $tag->active, array('id' => 'checkbox-'.$tag->id) ) }}
 				@endforeach
 			</div>
 

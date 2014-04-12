@@ -21,7 +21,6 @@ Route::get('tags/{id}/destroy', 'TagsController@destroy');
 Route::post('tags/store', 'TagsController@store');
 
 //Posts
-Route::get('posts/{idPost}/{idTag}/attach-tag', 'PostsController@attachTag');
 Route::get('posts/{id}/destroy', 'PostsController@destroy');
 
 //Composer

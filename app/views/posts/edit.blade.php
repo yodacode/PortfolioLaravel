@@ -24,6 +24,11 @@
 				{{ Form::label('url', 'URL') }}
 				{{ Form::text('url', null, array('class' => 'form-control')) }}
 			</div>
+			<div class="form-group app-list-checkbox">
+				@foreach ($listTags as $tag)
+					{{ Form::checkbox('tag[]', $tag->id, $tag->active, array('id' => 'checkbox-'.$tag->id) ) }}
+				@endforeach
+			</div>
 			<div class="form-group">
 				{{ Form::select('categories', $categories, $post->category->id, array('class' => 'form-control input-sm'))}}
 			</div>

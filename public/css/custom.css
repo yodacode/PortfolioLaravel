@@ -2,15 +2,8 @@ li {
 	list-style: none;
 }
 /******Tags******/
-.tags-list {
-	overflow: hidden;
-	padding: 0px;
-	margin: 0px;
-}
-.tags-list .item{
+#sidebar .label {
 	display: inline-block;
 	cursor: pointer;
-}
-.label a{
-	color: #FFF;
+	margin: 6px 1px 0px 1px;
 }
