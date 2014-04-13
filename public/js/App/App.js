@@ -13,6 +13,7 @@ $(function () {
 			this.UI.tagList = $('.app-tags-list');
 			this.UI.checkboxList = $('.app-list-checkbox');
 			this.UI.input = $('.app-tag-input');
+			this.UI.formTags = $('.app-form-tags');
 			this.UI.btnSubmit = $('.app-tag-btn');
 
 			this.bind();
@@ -20,8 +21,10 @@ $(function () {
 		bind: function () {
 			var that = this;
 
-			this.UI.btnSubmit.on('click', function () {
+			this.UI.formTags.submit(function (e) {
+				e.preventDefault();
 				that.saveTag(that.UI.input.val());
+				console.log($(this));
 			});
 
 			this.UI.tagList.on('click', '.item', function () {
@@ -40,8 +43,8 @@ $(function () {
 			.done(function(tag) {
 				that.createTagLabel(tag);
 		  	})
-		  	.error(function () {
-		  		alert('error');
+		  	.error(function (error) {
+		  		console.log(error);
 		  	});
 		},
 		createTagLabel: function (tag) {

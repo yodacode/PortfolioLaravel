@@ -3,12 +3,9 @@
 		<li class="list-group-item app-tags">
 
 			{{ Form::label('tags', 'Tags') }} ({{ $countTags }})
-			<div class="input-group">
+			<form class="app-form-tags">
 				{{ Form::text('tags', null, array('class' => 'form-control input-sm app-tag-input', 'placeholder' =>  'Add Tags here')) }}
-				<span class="input-group-btn">
-					<button class="btn btn-default btn-sm app-tag-btn" type="button">Go!</button>
-				</span>
-			</div>
+			</form>
 			<div class="app-tags-list">
 				@foreach ($listTags as $tag)
 					<span  data-id="{{$tag->id}}" class="label label-default {{{ $tag->active ? 'label-success' : '' }}} item">
