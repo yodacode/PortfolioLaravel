@@ -16,6 +16,12 @@ class Post extends Eloquent
 		return $this->belongsTo('Category');
 	}
 
+	// each post BELONGS to many media
+	// define our pivot table also
+	public function medias() {
+		return $this->belongsToMany('Media', 'posts_medias', 'post_id', 'media_id');
+	}
+
 	// each post BELONGS to many tag
 	// define our pivot table also
 	public function tags() {

@@ -28,6 +28,9 @@ Route::post('categories/store', 'CategoriesController@store');
 //Posts
 Route::get('posts/{id}/destroy', 'PostsController@destroy');
 
+//Medias
+Route::resource('medias', 'MediasController');
+
 //Composer
 
 

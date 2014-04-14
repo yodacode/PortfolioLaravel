@@ -23,7 +23,6 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Posts <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-
 							<li>{{ link_to_action('PostsController@index', 'Posts');}}</li>
 							<li>{{ link_to_action('TagsController@index', 'Tags');}}</li>
 							<li>{{ link_to_action('CategoriesController@index', 'Categories');}}</li>
@@ -31,6 +30,7 @@
 							<li>{{ link_to_action('PostsController@create', 'Ajouter un Post');}}</li>
 						</ul>
 					</li>
+					<li>{{ link_to_action('MediasController@index', 'Medias');}}</li>
 				</ul>
               	<ul class="nav navbar-nav navbar-right">
 	              	@if(!Auth::check())

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTagsTable extends Migration {
+class CreateMediasTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,11 @@ class CreateTagsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('tags', function(Blueprint $table)
+		Schema::create('medias', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('title', 255);			
+			$table->string('url', 255);			
 			$table->timestamps();
 		});
 	}
@@ -26,10 +27,10 @@ class CreateTagsTable extends Migration {
 	 * @return void
 	 */
 	public function down()
-	{		
-		Schema::table('tags', function(Blueprint $table)
+	{
+		Schema::table('medias', function(Blueprint $table)
 		{
-			Schema::dropIfExists("tags");
+			Schema::dropIfExists("medias");
 		});
 	}
 

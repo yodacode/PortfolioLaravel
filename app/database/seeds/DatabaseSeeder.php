@@ -61,11 +61,9 @@ class PortfolioAppSeeder extends Seeder {
 			'description' 	=> 'Description du projet three',
 			'category_id' 	=> $development->id
 		));
-
 		
 
 		$this->command->info('Posts seeds finish');
-
 
 
 		// seed our tags table ---------------------
