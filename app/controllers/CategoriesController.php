@@ -3,13 +3,20 @@
 class CategoriesController extends BaseController {
 
 	/**
+     * The layout that should be used for responses.
+     */
+    protected $layout = 'layouts.master';
+
+	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		//
+		$categories = Category::all();
+		$this->layout->content = View::make('categories.index')->with('categories', $categories);
+
 	}
 
 	/**
@@ -84,7 +91,9 @@ class CategoriesController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$category = Category::find($id);
+		$category->delete();
+		return Redirect::to('categories');
 	}
 
 }

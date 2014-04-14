@@ -30,7 +30,7 @@
 				@endforeach
 			</div>
 			<div class="form-group">
-				{{ Form::select('categories', $categories, $post->category->id, array('class' => 'form-control input-sm app-select'))}}
+				{{ Form::select('categories', $categories, isset($post->category->id) ? $post->category->id : '', array('class' => 'form-control input-sm app-select'))}}
 			</div>
 			<div class="form-group">
 				{{ Form::label('description', 'Description') }}

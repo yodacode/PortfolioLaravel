@@ -23,7 +23,11 @@
 				<td>{{ $value->id }}</td>
 				<td>{{ $value->title }}</td>
 				<td>{{ $value->url }}</td>
-				<td>{{ $value->category->title }}</td>
+				<td>
+					@if (isset($value->category->title))
+						{{ $value->category->title }}
+					@endif
+				</td>
 				<td>
 					@foreach ($value->tags as $tag)
 						<span class="label label-default">{{ $tag->title }}</span>

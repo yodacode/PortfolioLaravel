@@ -22,6 +22,7 @@ Route::post('tags/store', 'TagsController@store');
 
 //Categories
 Route::resource('categories', 'CategoriesController');
+Route::get('categories/{id}/destroy', 'CategoriesController@destroy');
 Route::post('categories/store', 'CategoriesController@store');
 
 //Posts

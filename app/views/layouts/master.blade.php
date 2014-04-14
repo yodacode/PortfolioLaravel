@@ -26,7 +26,7 @@
 
 							<li>{{ link_to_action('PostsController@index', 'Posts');}}</li>
 							<li>{{ link_to_action('TagsController@index', 'Tags');}}</li>
-							<li><a href="#">Categories</a></li>
+							<li>{{ link_to_action('CategoriesController@index', 'Categories');}}</li>
 							<li class="divider"></li>
 							<li>{{ link_to_action('PostsController@create', 'Ajouter un Post');}}</li>
 						</ul>
