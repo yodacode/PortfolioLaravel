@@ -43,6 +43,7 @@ $(function () {
 			  data: {title: tag}
 			})
 			.done(function(tag) {
+				that.UI.input.val('');
 				that.createTagLabel(tag);
 		  	})
 		  	.error(function (error) {
@@ -90,9 +91,10 @@ $(function () {
 			  url: "/categories/store",
 			  data: {title: cat}
 			})
-			.done(function(cat) {				
+			.done(function(cat) {
 				that.createCatOption(cat);
-				that.UI.select.find('option:last').attr('selected', 'selected');							
+				that.UI.input.val('');
+				that.UI.select.find('option:last').attr('selected', 'selected');
 		  	})
 		  	.error(function (error) {
 		  		console.log(error);
