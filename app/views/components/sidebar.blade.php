@@ -1,7 +1,6 @@
 <div class="col-md-4">
 	<ul class="list-group" id="sidebar" data-id-post="{{ $currentIdPost }}">
-		<li class="list-group-item app-tags">
-
+		<li class="list-group-item">
 			{{ Form::label('tags', 'Tags') }} ({{ $countTags }})
 			<form class="app-form-tags">
 				{{ Form::text('tags', null, array('class' => 'form-control input-sm app-tag-input', 'placeholder' =>  'Add Tags here')) }}
@@ -14,5 +13,13 @@
 				@endforeach
 			</div>
 		</li>
+
+		<li class="list-group-item">
+			{{ Form::label('categories', 'Categories') }} ({{ $countCategories }})
+			<form class="app-form-categories">
+				{{ Form::text('categories', null, array('class' => 'form-control input-sm app-category-input', 'placeholder' =>  'Add Categories here')) }}
+			</form>			
+		</li>
+
 	</ul>
 </div>

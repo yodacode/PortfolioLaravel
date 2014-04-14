@@ -96,4 +96,5 @@ View::composer(array('posts.edit', 'posts.create'), function($view)//array('layo
     $view->with('listTags', $tags);
     $view->with('currentIdPost', $currentIdPost);
     $view->with('countTags', Tag::count());
+    $view->with('countCategories', Category::count());
 });

@@ -20,6 +20,10 @@ Route::resource('tags', 'TagsController');
 Route::get('tags/{id}/destroy', 'TagsController@destroy');
 Route::post('tags/store', 'TagsController@store');
 
+//Categories
+Route::resource('categories', 'CategoriesController');
+Route::post('categories/store', 'CategoriesController@store');
+
 //Posts
 Route::get('posts/{id}/destroy', 'PostsController@destroy');
 

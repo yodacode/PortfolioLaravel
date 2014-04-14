@@ -32,8 +32,7 @@
 			</div>
 
 			<div class="form-group">
-				{{ Form::select('categories', $categories, null, array('class' => 'form-control input-sm'))}}
-
+				{{ Form::select('categories', $categories, null, array('class' => 'form-control input-sm app-select'))}}
 			</div>
 			<div class="form-group">
 				{{ Form::label('description', 'Description') }}
