@@ -1,6 +1,12 @@
 # Laravel Portfolio
 ## Installation
 
+**Build dependencies with composr**
+
+````
+composer update
+````
+
 **Create the database**
 
 ````
