@@ -1,6 +1,13 @@
 # Laravel Portfolio
 ## Installation
 
+**Make sure you have [Composer](https://getcomposer.org/doc/00-intro.md#installation-nix)**
+
+````
+curl -sS https://getcomposer.org/installer | php
+````
+
+
 **Build dependencies with composr**
 
 ````
