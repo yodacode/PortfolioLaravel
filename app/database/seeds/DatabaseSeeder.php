@@ -66,8 +66,6 @@ class PortfolioAppSeeder extends Seeder {
 		$this->command->info('Posts seeds finish');
 
 
-		// seed our tags table ---------------------
-
 		// we will create one picnic and apply all bears to this one picnic
 		$php = Tag::create(array(
 			'title'        => 'php',
@@ -94,6 +92,33 @@ class PortfolioAppSeeder extends Seeder {
 		$postThree->tags()->attach($javascript->id);
 
 		$this->command->info('Tags seeds finish');
+
+
+		// we will create one picnic and apply all bears to this one picnic
+		$image1 = Media::create(array(
+			'name'        	=> 'image1.jpg',
+		));
+
+		$image2 = Media::create(array(
+			'name'        	=> 'image2.jpg',
+		));
+
+		$image3 = Media::create(array(
+			'name'        	=> 'image3.jpg',
+		));
+		
+		
+		// link our posts to medias ---------------------
+		// for our purposes we'll just add all bears to both tags for our many to many relationship
+		$postOne->medias()->attach($image1->id);
+		$postOne->medias()->attach($image2->id);
+
+		$postTwo->medias()->attach($image3->id);
+		$postTwo->medias()->attach($image2->id);
+
+		$postThree->medias()->attach($image2->id);		
+
+		$this->command->info('Medias seeds finish');
 
 	}
 

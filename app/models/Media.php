@@ -3,7 +3,7 @@ class Media extends Eloquent {
 	
 	// MASS ASSIGNMENT -------------------------------------------------------
 	// define which attributes are mass assignable (for security)
-	protected $fillable = array('title', 'url', 'post_id');
+	protected $fillable = array('name');
 
 	
 	// DEFINE RELATIONSHIPS --------------------------------------------------

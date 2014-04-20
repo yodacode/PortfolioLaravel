@@ -14,6 +14,7 @@
 
 Route::controller('users', 'UsersController');
 Route::resource('posts', 'PostsController');
+Route::resource('medias', 'MediasController');
 
 //Tags
 Route::resource('tags', 'TagsController');
@@ -29,8 +30,7 @@ Route::post('categories/store', 'CategoriesController@store');
 Route::get('posts/{id}/destroy', 'PostsController@destroy');
 
 //Medias
-Route::resource('medias', 'MediasController');
+Route::get('medias/{id}/destroy', 'MediasController@destroy');
 
-//Composer
 
 

@@ -1,13 +1,18 @@
 $(function () {
 
 	var App = {
+	    constructors: {}, //object constructors
+	    screen1Settings: {sizeX: 500, sizeY: 500},
+	    currentScreen: null
+	};
 
+	App.constructors.TagsManager = function (settings) {
+		init
 	};
 
 	App.Sidebar = {
 
 	};
-
 
 
 	App.Sidebar.Tags = {
@@ -108,5 +113,71 @@ $(function () {
 		}
 	};
 	App.Sidebar.Categories.init();
+
+
+	// App.Upload = {
+	// 	init: function () {
+	// 		this.UI = {};
+	// 		this.UI.input = $('app-input-file');
+
+	// 		this.bind();
+	// 	},
+	// 	bind: function () {
+	// 		console.log('bind');
+	// 	},
+	// 	saveUpload: function () {
+
+	// 	}
+	// };
+	// App.Upload.init();
+
+
+
+	var settings = $("#mulitplefileuploader").uploadFile({
+        url: "{{ URL::to('upload') }}",
+        method: "POST",
+        allowedTypes:"jpg,png,gif",
+        fileName: "myfile",
+        autoSubmit:false,
+        showStatusAfterSuccess:false,
+        onSubmit:function(files)
+        {
+            $('<input>').attr({
+                type: 'text',
+                name: 'myfile[]',
+                value: files
+            }).appendTo('#myform');
+        },
+        onSuccess:function(files,data,xhr)
+        {
+            $('#myform').submit();
+        },
+        onError: function(files,status,errMsg)
+        {
+            $("#status").html("<font color='green'>Something Wrong</font>");
+        }
+    });
+	 
+    $('.submit_form').click(function() {
+
+        var validate = $("#myform").validationEngine('validate');
+        var has_file = $(".ajax-file-upload-statusbar").length //check if there files need upload
+
+        if(validate){
+            if(has_file != false){
+                settings.startUpload();
+            }else{
+                $('#myform').submit();
+            }
+        }
+    });
+
+
+
+
+
+
+
+	
 
 });
