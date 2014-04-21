@@ -64,5 +64,33 @@
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 		<script src="{{ URL::asset('lib/bootstrap/js/bootstrap.min.js') }}"></script>
 		<script src="{{ URL::asset('js/App/App.js') }}"></script>
+
+		 <script src="{{ URL::asset('js/jquery.ui.widget.js') }}"></script>
+	      <script src="{{ URL::asset('js/jquery.iframe-transport.js') }}"></script>
+	      <script src="{{ URL::asset('js/jquery.fileupload.js') }}"></script>
+	      <script>
+	         jQuery(function () {
+	             var url = '{{url('medias/upload');}}';
+	             $('#fileupload').fileupload({
+	                 url: url,
+	                 dataType: 'json',
+	                 done: function (e, data) {
+	                 	console.log(e, data);
+	                     // $.each(data.result.files, function (index, file) {
+	                     //     $('<p/>').text(file.name).appendTo('#files');
+	                     // });
+	                 },
+	                 progressall: function (e, data) {
+		                // Update the progress bar while files are being uploaded
+		                var progress = parseInt(data.loaded / data.total * 100, 10);
+		                console.log(progress);
+		                // $('#progress .bar').css(
+		                //     'width',
+		                //     progress + '%'
+		                // );
+		            }
+             	});
+         	});
+	     </script>
     </body>
 </html>

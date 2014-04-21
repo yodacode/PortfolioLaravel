@@ -32,5 +32,7 @@ Route::get('posts/{id}/destroy', 'PostsController@destroy');
 //Medias
 Route::get('medias/{id}/destroy', 'MediasController@destroy');
 
+Route::post('medias/upload', 'MediasController@postUpload');
+
 
 
