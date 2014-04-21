@@ -21,34 +21,26 @@ class MediasController extends BaseController {
 
 	public function postUpload()
 	{
-		// $file = Input::file('file');
-		// $filename = Str::slug(Input::get('title'));
-		// $filesave = $filename.'.jpg';
-		
 
-
-		$file = Input::file('file');
-		 
 		$destinationPath = public_path().'/uploads/';
-		$filename = str_random(12);
-		$upload_success = Input::file('file')->move($destinationPath, $filename);
-		if( $upload_success ) {
-		   return Response::json('success', 200);
-		} else {
-		   return Response::json('error', 400);
-		}
 
-		//return Response::json(array('destinationPath' => $destinationPath, 'filename' => $filename), 200);
+		foreach(Input::file('file') as $file){
 
-		//$filename = $file->getClientOriginalName();
-		//$extension =$file->getClientOriginalExtension(); 
-		// $upload_success = Input::file('file')->move($destinationPath, $filename);
-		 
-		// if( $upload_success ) {
-		//    return Response::json('success', 200);
-		// } else {
-		//    return Response::json('error', 400);
-		// }
+			$filename = str_random(12) . '.jpg';
+        	$uploadSuccess = $file->move($destinationPath, $filename);
+
+            if($uploadSuccess) {
+
+            	$media = new Media;
+        		$media->name = $filename;
+        		$media->save();
+
+		   		return Response::json(array('filename' => $filename) , 200);
+			} else {
+		   		return Response::json('error', 400);
+			}
+
+        }
 	}
 
 	/**

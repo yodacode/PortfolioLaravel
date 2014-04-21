@@ -118,28 +118,69 @@ $(function () {
 	App.Upload = {
 		init: function () {
 			this.UI = {};
-			this.UI.input = $('app-input-file');
-
+			this.UI.input = $('.app-input-file');
+			this.UI.progress = $('.app-progress-bar');
+			this.UI.modal = $('#mediaUpload');
+			this.UI.preview = $('.app-preview')
 			this.bind();
 		},
 		bind: function () {
-			console.log('bind');
-		},
-		saveUpload: function () {
+			var that = this;
 
+			this.fileUpload();
+			this.UI.modal.on('hidden.bs.modal', function (e) {
+  				that.resetModal();
+  				window.location.reload();
+			});
+		},
+		resetModal: function () {
+			this.UI.progress.css(
+			    'width',
+			    0 + '%'
+			);
+			this.UI.preview.empty();
+		},
+		fileUpload: function () {
+			var that = this;
+
+			this.UI.input.fileupload({
+				url: '/medias/upload',
+				dataType: 'json',
+				done: function (e, data) {
+					$('<img/>')
+						.attr({
+							'src': '/uploads/' + data.result.filename,
+							'class': 'img-thumbnail'
+						})
+						.appendTo(that.UI.preview);
+				},
+				progressall: function (e, data) {
+					// Update the progress bar while files are being uploaded
+					var progress = parseInt(data.loaded / data.total * 100, 10);
+					console.log(progress);
+					that.UI.progress.css(
+					    'width',
+					    progress + '%'
+					);
+ 				}
+			});
 		}
 	};
 	App.Upload.init();
 
 
-
-
-
-
-
-
-
-
-	
+	App.Gallery = {
+		init: function () {
+			//this.UI.gallery = $('.gallery');
+			this.build();
+		},
+		build: function () {
+			$('.gallery').masonry({
+				columnWidth: 10,
+				itemSelector: '.item'
+			});
+		}
+	}
+	App.Gallery.init();
 
 });

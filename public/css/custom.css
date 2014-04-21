@@ -7,3 +7,43 @@ li {
 	cursor: pointer;
 	margin: 6px 1px 0px 1px;
 }
+
+
+
+/******Upload******/
+.uploader img {
+	width: 50px;
+	height: 50px;
+	margin: 0px 3px 0px 3px;
+}
+
+.uploader .fileinput-button {
+	position: relative;
+	overflow: hidden;
+}
+
+.uploader .fileinput-button input {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	transform: translate(-300px, 0) scale(4);
+	font-size: 23px;
+	direction: ltr;
+	cursor: pointer;
+}
+.gallery {
+	overflow: hidden;
+}
+.gallery img {
+	width: 150px;
+	float: left;
+}
+
+.item { 
+	width: 25%; 
+	margin: 5px;
+	/*margin: 3px 0px 3px 0px;*/
+}
