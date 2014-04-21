@@ -34,6 +34,8 @@ li {
 	direction: ltr;
 	cursor: pointer;
 }
+
+/******Gallery******/
 .gallery {
 	overflow: hidden;
 }
@@ -42,7 +44,7 @@ li {
 	float: left;
 }
 
-.item { 
+.item-gallery { 
 	width: 25%; 
 	margin: 5px;
 	/*margin: 3px 0px 3px 0px;*/

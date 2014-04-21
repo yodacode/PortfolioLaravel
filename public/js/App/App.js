@@ -177,7 +177,7 @@ $(function () {
 		build: function () {
 			$('.gallery').masonry({
 				columnWidth: 10,
-				itemSelector: '.item'
+				itemSelector: '.item-gallery'
 			});
 		}
 	}
