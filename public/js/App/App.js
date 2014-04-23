@@ -147,6 +147,7 @@ $(function () {
 				url: '/medias/upload',
 				dataType: 'json',
 				done: function (e, data) {
+					console.log(e,data);
 					$('<img/>')
 						.attr({
 							'src': '/uploads/' + data.result.filename,
@@ -176,8 +177,8 @@ $(function () {
 		},
 		build: function () {
 			$('.gallery').masonry({
-				columnWidth: 10,
-				itemSelector: '.item-gallery'
+				columnWidth: '.ms-item',
+				itemSelector: '.ms-item'
 			});
 		}
 	}

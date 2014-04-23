@@ -22,23 +22,47 @@ class MediasController extends BaseController {
 	public function postUpload()
 	{
 
-		$destinationPath = public_path().'/uploads/';
+		$destinationPath = public_path() . '/uploads/';
 
 		foreach(Input::file('file') as $file){
 
+			$image = $file;
 			$filename = str_random(12) . '.jpg';
-        	$uploadSuccess = $file->move($destinationPath, $filename);
 
-            if($uploadSuccess) {
+			$path = public_path('uploads/' . $filename);
+			$pathThumb = public_path('uploads/thumbs/' . $filename);
 
-            	$media = new Media;
-        		$media->name = $filename;
-        		$media->save();
+			$img = Image::make($image->getRealPath());
+			$img->resize(500, null, true);
+			$img->save($path);
 
-		   		return Response::json(array('filename' => $filename) , 200);
-			} else {
-		   		return Response::json('error', 400);
-			}
+			$imgThumb = Image::make($image->getRealPath());
+			$imgThumb->resize(150, null, true);
+			$imgThumb->save($pathThumb);
+
+	     	$media = new Media;
+    		$media->name = $filename;
+    		$media->save();
+
+
+
+			// Image::make($file->getRealPath())->resize(300, 200)->save('foo.jpg');
+
+   			//$uploadSuccess = $file->move($destinationPath, $filename);
+
+	   		return Response::json(array('filename' => $filename, 'getRealPath' => $image->getRealPath(), 'img' => $path) , 200);
+
+
+
+   //          if($uploadSuccess) {
+
+   //          	$media = new Media;
+   //      		$media->name = $filename;
+   //      		$media->save();
+
+			// } else {
+		 //   		return Response::json('error', 400);
+			// }
 
         }
 	}

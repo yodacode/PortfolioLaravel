@@ -38,14 +38,6 @@ li {
 /******Gallery******/
 .gallery {
 	overflow: hidden;
-}
-.gallery img {
-	width: 150px;
-	float: left;
+	padding-left:0; padding-right:0;
 }
 
-.item-gallery { 
-	width: 25%; 
-	margin: 5px;
-	/*margin: 3px 0px 3px 0px;*/
-}

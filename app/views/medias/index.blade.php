@@ -12,7 +12,7 @@
 
 	<div class="gallery">
 		@foreach($medias as $key => $value)
-			{{ HTML::image("uploads/" . $value->name, $value->name, array('class' => 'item-gallery')) }}
+			{{ HTML::image("uploads/thumbs/" . $value->name, $value->name, array('class' => 'ms-item')) }}
 		@endforeach
 	</div>
 

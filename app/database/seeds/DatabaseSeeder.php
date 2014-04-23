@@ -95,28 +95,28 @@ class PortfolioAppSeeder extends Seeder {
 
 
 		// we will create one picnic and apply all bears to this one picnic
-		$image1 = Media::create(array(
-			'name'        	=> 'image1.jpg',
-		));
+		// $image1 = Media::create(array(
+		// 	'name'        	=> 'image1.jpg',
+		// ));
 
-		$image2 = Media::create(array(
-			'name'        	=> 'image2.jpg',
-		));
+		// $image2 = Media::create(array(
+		// 	'name'        	=> 'image2.jpg',
+		// ));
 
-		$image3 = Media::create(array(
-			'name'        	=> 'image3.jpg',
-		));
+		// $image3 = Media::create(array(
+		// 	'name'        	=> 'image3.jpg',
+		// ));
 		
 		
 		// link our posts to medias ---------------------
 		// for our purposes we'll just add all bears to both tags for our many to many relationship
-		$postOne->medias()->attach($image1->id);
-		$postOne->medias()->attach($image2->id);
+		// $postOne->medias()->attach($image1->id);
+		// $postOne->medias()->attach($image2->id);
 
-		$postTwo->medias()->attach($image3->id);
-		$postTwo->medias()->attach($image2->id);
+		// $postTwo->medias()->attach($image3->id);
+		// $postTwo->medias()->attach($image2->id);
 
-		$postThree->medias()->attach($image2->id);		
+		// $postThree->medias()->attach($image2->id);		
 
 		$this->command->info('Medias seeds finish');
 

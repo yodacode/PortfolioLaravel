@@ -4,6 +4,7 @@
 		<!--CSS-->
 		<link rel="stylesheet" href="{{ URL::asset('lib/bootstrap/css/bootstrap-flatly.min.css') }}">
 		<link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
+	      
 		<title>Benjamin</title>
 	</head>
     <body>
@@ -61,14 +62,14 @@
         </div>
 
         <!--SCRIPT-->
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="{{ URL::asset('js/jquery-1.10.2.min.js') }}"></script>
 		<script src="{{ URL::asset('lib/bootstrap/js/bootstrap.min.js') }}"></script>
 		<script src="{{ URL::asset('js/App/App.js') }}"></script>
 
-		 <script src="{{ URL::asset('js/jquery.ui.widget.js') }}"></script>
-	      <script src="{{ URL::asset('js/jquery.iframe-transport.js') }}"></script>
-	      <script src="{{ URL::asset('js/jquery.fileupload.js') }}"></script>
-	      <script src="{{ URL::asset('js/masonry.pkgd.min.js') }}"></script>
+		<script src="{{ URL::asset('js/jquery.ui.widget.js') }}"></script>
+	    <script src="{{ URL::asset('js/jquery.iframe-transport.js') }}"></script>
+	   	<script src="{{ URL::asset('js/jquery.fileupload.js') }}"></script>
+	   	<script src="{{ URL::asset('js/masonry.pkgd.min.js') }}"></script>
 
     </body>
 </html>
