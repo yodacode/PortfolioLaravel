@@ -53,7 +53,6 @@
 
 
         <div class="container">
-
         	<!-- will be used to show any messages -->
 			@if (Session::has('message'))
 				<div class="alert alert-info">{{ Session::get('message') }}</div>
@@ -66,9 +65,11 @@
 		<script src="{{ URL::asset('lib/bootstrap/js/bootstrap.min.js') }}"></script>
 		<script src="{{ URL::asset('js/App/App.js') }}"></script>
 
+		<!--lib-->
 		<script src="{{ URL::asset('js/jquery.ui.widget.js') }}"></script>
 	    <script src="{{ URL::asset('js/jquery.iframe-transport.js') }}"></script>
 	   	<script src="{{ URL::asset('js/jquery.fileupload.js') }}"></script>
+	   	<script src="{{ URL::asset('js/imagesloaded.pkgd.min.js') }}"></script>
 	   	<script src="{{ URL::asset('js/masonry.pkgd.min.js') }}"></script>
 
     </body>

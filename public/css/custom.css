@@ -35,9 +35,4 @@ li {
 	cursor: pointer;
 }
 
-/******Gallery******/
-.gallery {
-	overflow: hidden;
-	padding-left:0; padding-right:0;
-}
 

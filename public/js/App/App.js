@@ -172,14 +172,20 @@ $(function () {
 
 	App.Gallery = {
 		init: function () {
-			//this.UI.gallery = $('.gallery');
+			this.UI = {};
+			this.UI.gallery = $('.gallery');
 			this.build();
 		},
 		build: function () {
-			$('.gallery').masonry({
-				columnWidth: '.ms-item',
-				itemSelector: '.ms-item'
+			var that = this;
+			this.UI.gallery.css('opacity', 0);
+			// initialize Masonry after all images have loaded
+			this.UI.gallery.imagesLoaded( function() {
+				that.UI.gallery.masonry().animate({
+					'opacity': 1
+				}, 1000);
 			});
+
 		}
 	}
 	App.Gallery.init();
