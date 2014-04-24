@@ -44,25 +44,7 @@ class MediasController extends BaseController {
     		$media->name = $filename;
     		$media->save();
 
-
-
-			// Image::make($file->getRealPath())->resize(300, 200)->save('foo.jpg');
-
-   			//$uploadSuccess = $file->move($destinationPath, $filename);
-
 	   		return Response::json(array('filename' => $filename, 'getRealPath' => $image->getRealPath(), 'img' => $path) , 200);
-
-
-
-   //          if($uploadSuccess) {
-
-   //          	$media = new Media;
-   //      		$media->name = $filename;
-   //      		$media->save();
-
-			// } else {
-		 //   		return Response::json('error', 400);
-			// }
 
         }
 	}
@@ -126,11 +108,25 @@ class MediasController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($id=null)
 	{
-		$media = Media::find($id);
-		$media->delete();
-		return Redirect::to('medias');
+
+		if (Request::ajax()) {
+
+			$media = Media::find(Input::get('id'));
+			$media->delete();
+			return Response::json(array(
+					'message' 	=> 'success',
+					'id'		=> Input::get('id')
+				), 200);
+
+		} else {
+
+			$media = Media::find($id);
+			$media->delete();
+			return Redirect::to('medias');
+			
+		}
 	}
 
 }

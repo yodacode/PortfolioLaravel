@@ -174,11 +174,12 @@ $(function () {
 		init: function () {
 			this.UI = {};
 			this.UI.gallery = $('.gallery');
-			this.build();
+			this.bind();
 		},
-		build: function () {
+		bind: function () {
 			var that = this;
 			this.UI.gallery.css('opacity', 0);
+
 			// initialize Masonry after all images have loaded
 			this.UI.gallery.imagesLoaded( function() {
 				that.UI.gallery.masonry().animate({
@@ -186,7 +187,37 @@ $(function () {
 				}, 1000);
 			});
 
+			$(".thumb").hover(
+			   function() {
+			    	$(this).find('.overlay').stop().fadeIn(300);
+			   	},
+			   	function() {
+			    	$(this).find('.overlay').stop().fadeOut(300);
+			   	}
+			);
+
+			$('.btn-remove').click(function (e) {
+				e.preventDefault();
+				$(this).closest('.thumb').remove();
+				that.UI.gallery.masonry();
+				that.removeMedia($(this).attr('data-id'))
+			});
+		},
+		removeMedia: function (id) {
+			console.log('removeMedia', id);
+			$.ajax({
+			  type: "POST",
+			  url: "/medias/destroy",
+			  data: {id: null}
+			})
+			.done(function(r) {
+				console.log(r);
+		  	})
+		  	.error(function (error) {
+		  		console.log(error);
+		  	});
 		}
+
 	}
 	App.Gallery.init();
 

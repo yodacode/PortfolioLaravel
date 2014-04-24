@@ -12,7 +12,14 @@
 
 	<div class="gallery">
 		@foreach($medias as $key => $value)
-			{{ HTML::image("uploads/thumbs/" . $value->name, $value->name, array('class' => 'ms-item')) }}
+			<div class="thumb">
+				<div class="overlay">
+					<h2>{{ $value->name }}</h2>
+					<!-- <a class="glyphicon glyphicon-remove btn-remove" href="{{ URL::to('medias/' . $value->id . '/destroy') }}"></span></a> -->
+					<a class="glyphicon glyphicon-remove btn-remove" data-id="{{$value->id}}" href="#"></span></a>
+				</div>
+				{{ HTML::image("uploads/thumbs/" . $value->name, $value->name, array('class' => 'ms-item')) }}
+			</div>
 		@endforeach
 	</div>
 
