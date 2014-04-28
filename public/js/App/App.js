@@ -208,7 +208,7 @@ $(function () {
 			$.ajax({
 			  type: "POST",
 			  url: "/medias/destroy",
-			  data: {id: null}
+			  data: {id: id}
 			})
 			.done(function(r) {
 				console.log(r);
