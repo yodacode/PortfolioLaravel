@@ -1,69 +1,73 @@
 li {
-	list-style: none;
+    list-style: none;
 }
 /******Tags******/
 #sidebar .label {
-	display: inline-block;
-	cursor: pointer;
-	margin: 6px 1px 0px 1px;
+    display: inline-block;
+    cursor: pointer;
+    margin: 6px 1px 0px 1px;
 }
 
 
 
 /******Upload******/
 .uploader img {
-	width: 50px;
-	height: 50px;
-	margin: 0px 3px 0px 3px;
+    width: 50px;
+    height: 50px;
+    margin: 0px 3px 0px 3px;
 }
 
 .uploader .fileinput-button {
-	position: relative;
-	overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
 
 .uploader .fileinput-button input {
-	position: absolute;
-	top: 0;
-	right: 0;
-	margin: 0;
-	opacity: 0;
-	filter: alpha(opacity=0);
-	transform: translate(-300px, 0) scale(4);
-	font-size: 23px;
-	direction: ltr;
-	cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    transform: translate(-300px, 0) scale(4);
+    font-size: 23px;
+    direction: ltr;
+    cursor: pointer;
 }
 
 /******Gallery******/
 .gallery .thumb {
-	position: relative;	
+    position: relative; 
+}
+
+.gallery .thumb .ms-item {
+    margin: 5px;
 }
 
 .gallery .thumb .overlay {
-	position: absolute;
-	background: #000;
-	width: 100%;
-	height: 100%;
-	opacity: 0.8;
-	display: none;
-	overflow: hidden;
+    position: absolute;
+    background: #2C3E50;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    display: none;
+    overflow: hidden;
 }
 
 .overlay h2, .overlay p {
-	color: #FFF;
+    color: #FFF;
 }
 
 .overlay h2 {
-	font-size: 0.8em;
-	text-align: center;
-	vertical-align: center;
+    font-size: 0.8em;
+    text-align: center;
+    vertical-align: center;
 }
 .overlay .btn-remove {
-	position: absolute;
-	right: 5px;
-	top: 5px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
 }
 .overlay .btn-remove:hover {
-	text-decoration: none;
+    text-decoration: none;
 }

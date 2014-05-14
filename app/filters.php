@@ -13,13 +13,13 @@
 
 App::before(function($request)
 {
-	//
+    //
 });
 
 
 App::after(function($request, $response)
 {
-	//
+    //
 });
 
 /*
@@ -35,13 +35,13 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::guest('users/login');
+    if (Auth::guest()) return Redirect::guest('users/login');
 });
 
 
 Route::filter('auth.basic', function()
 {
-	return Auth::basic();
+    return Auth::basic();
 });
 
 /*
@@ -57,7 +57,7 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-	if (Auth::check()) return Redirect::to('/');
+    if (Auth::check()) return Redirect::to('/');
 });
 
 /*
@@ -73,10 +73,10 @@ Route::filter('guest', function()
 
 Route::filter('csrf', function()
 {
-	if (Session::token() != Input::get('_token'))
-	{
-		throw new Illuminate\Session\TokenMismatchException;
-	}
+    if (Session::token() != Input::get('_token'))
+    {
+        throw new Illuminate\Session\TokenMismatchException;
+    }
 });
 
 /*
@@ -86,15 +86,16 @@ Route::filter('csrf', function()
 */
 View::composer(array('posts.edit', 'posts.create'), function($view)//array('layouts.admin','post.*')
 {
-	$currentIdPost = Route::getCurrentRoute()->getParameter('posts');
-	$tags = Tag::all();
-	foreach ($tags as $tag) {
-		if ($tag->posts->find($currentIdPost)) {
-			$tag->active = true;
-		}
-	}
+    $currentIdPost = Route::getCurrentRoute()->getParameter('posts');
+    $tags = Tag::all();
+    foreach ($tags as $tag) {
+        if ($tag->posts->find($currentIdPost)) {
+            $tag->active = true;
+        }
+    }
     $view->with('listTags', $tags);
     $view->with('currentIdPost', $currentIdPost);
     $view->with('countTags', Tag::count());
     $view->with('countCategories', Category::count());
+    $view->with('countMedias', Media::count());
 });
