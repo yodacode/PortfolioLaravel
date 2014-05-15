@@ -13,16 +13,17 @@
 
 
 Route::controller('users', 'UsersController');
+
 Route::resource('posts', 'PostsController');
 Route::resource('medias', 'MediasController');
+Route::resource('tags', 'TagsController');
+Route::resource('categories', 'CategoriesController');
 
 //Tags
-Route::resource('tags', 'TagsController');
 Route::get('tags/{id}/destroy', 'TagsController@destroy');
 Route::post('tags/store', 'TagsController@store');
 
 //Categories
-Route::resource('categories', 'CategoriesController');
 Route::get('categories/{id}/destroy', 'CategoriesController@destroy');
 Route::post('categories/store', 'CategoriesController@store');
 
@@ -32,7 +33,6 @@ Route::get('posts/{id}/destroy', 'PostsController@destroy');
 //Medias
 Route::get('medias/{id}/destroy', 'MediasController@destroy');
 Route::post('medias/destroy', 'MediasController@destroy');
-
 Route::post('medias/upload', 'MediasController@postUpload');
 
 

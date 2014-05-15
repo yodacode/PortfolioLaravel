@@ -15,8 +15,13 @@ class MediasController extends BaseController {
 	 */
 	public function index()
 	{
-		$medias = Media::all();
-		$this->layout->content = View::make('medias.index')->with('medias', $medias);
+		if (Request::ajax()) {
+			$medias = Media::all();
+			return Response::json($medias);
+		} else {
+			$medias = Media::all();
+			$this->layout->content = View::make('medias.index')->with('medias', $medias);
+		}
 	}
 
 	public function postUpload()

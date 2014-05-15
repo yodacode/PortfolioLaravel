@@ -174,7 +174,9 @@ $(function () {
         init: function () {
             this.UI = {};
             this.UI.gallery = $('.gallery');
+            this.UI.modalAttachMedias = $('#attachMedias');
             this.bind();
+
         },
         bind: function () {
             var that = this;
@@ -202,9 +204,17 @@ $(function () {
                 that.UI.gallery.masonry();
                 that.removeMedia($(this).attr('data-id'))
             });
+
+
+            $.when(that.getMedias()).then(function( medias, textStatus, jqXHR ) {
+                that.appendMediasInModal(medias);
+                that.UI.modalAttachMedias.find('.modal-body').on('click', 'img', function () {
+                    $(this).toggleClass('selected');
+                });
+            });
+
         },
         removeMedia: function (id) {
-            console.log('removeMedia', id);
             $.ajax({
               type: "POST",
               url: "/medias/destroy",
@@ -216,6 +226,31 @@ $(function () {
             .error(function (error) {
                 console.log(error);
             });
+        },
+        getMedias: function () {
+
+            var medias = $.ajax({
+              type: "GET",
+              url: "/medias",
+            });
+
+            return medias;
+        },
+        appendMediasInModal: function (medias) {
+            var img,
+                media,
+                container = this.UI.modalAttachMedias.find('.modal-body');
+
+            for (var i in medias) {
+                media = medias[i];                
+
+                img = $('<img>')
+                    .attr({
+                        'class':'img-thumbnail', 
+                        'src': '/uploads/thumbs/' + media.name
+                    })
+                    .appendTo(container);
+            }
         }
 
     }

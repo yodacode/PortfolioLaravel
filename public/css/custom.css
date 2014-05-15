@@ -9,7 +9,6 @@ li {
 }
 
 
-
 /******Upload******/
 .uploader img {
     width: 50px;
@@ -70,4 +69,14 @@ li {
 }
 .overlay .btn-remove:hover {
     text-decoration: none;
+}
+
+#attachMedias img {
+    margin: 5px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+#attachMedias img.selected {
+    opacity: 1;
 }
