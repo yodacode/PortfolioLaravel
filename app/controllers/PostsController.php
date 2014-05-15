@@ -56,12 +56,22 @@ class PostsController extends BaseController {
 			$post->description = Input::get('description');
 			$post->category_id = Input::get('categories');
 			$tagsChecked = Input::get('tag');
+			$mediasChecked = Input::get('media');
 			$post->save();
+			
 			//now associate the tags
 			if(is_array($tagsChecked))
 			{
 			   foreach ($tagsChecked as $id) {
 			   		$post->tags()->attach($id);
+			   }
+			}
+
+			//now associate the medias
+			if(is_array($mediasChecked))
+			{
+			   foreach ($mediasChecked as $id) {
+			   		$post->medias()->attach($id);
 			   }
 			}
 
@@ -124,6 +134,7 @@ class PostsController extends BaseController {
 			$post->description = Input::get('description');
 			$post->category_id = Input::get('categories');
 			$tagsChecked = Input::get('tag');
+			$mediasChecked = Input::get('media');
 			$post->save();
 
 
@@ -140,8 +151,21 @@ class PostsController extends BaseController {
 		   				$post->tags()->attach($idChecked);
 		   			}
 		   		}
+			}
 
-
+			//now associate the medias
+			if(is_array($mediasChecked))
+			{
+				// detach all medias
+				foreach (Media::all() as $media) {
+					$post->medias()->detach($media->id);
+				}
+				// attach new medias
+		   		foreach ($mediasChecked as $idChecked) {
+		   			if (is_null($post->medias->find($idChecked))) {
+		   				$post->medias()->attach($idChecked);
+		   			}
+		   		}
 			}
 			//redirect
 			Session::flash('message', 'Successfuly updated post !');

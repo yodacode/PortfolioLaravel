@@ -6,21 +6,14 @@ $(function () {
         currentScreen: null
     };
 
-    App.constructors.TagsManager = function (settings) {
-        init
-    };
-
-    App.Sidebar = {
-
-    };
-
+    App.Sidebar = {};
 
     App.Sidebar.Tags = {
         init: function () {
 
             this.UI = {};
             this.UI.tagList = $('.app-tags-list');
-            this.UI.checkboxList = $('.app-list-checkbox');
+            this.UI.checkboxList = $('.app-tags-checkbox');
             this.UI.input = $('.app-tag-input');
             this.UI.formTags = $('.app-form-tags');
 
@@ -175,6 +168,7 @@ $(function () {
             this.UI = {};
             this.UI.gallery = $('.gallery');
             this.UI.modalAttachMedias = $('#attachMedias');
+            this.UI.checkboxList = $('.app-medias-checkbox');
             this.bind();
 
         },
@@ -204,14 +198,14 @@ $(function () {
                 that.UI.gallery.masonry();
                 that.removeMedia($(this).attr('data-id'))
             });
-
-
-            $.when(that.getMedias()).then(function( medias, textStatus, jqXHR ) {
-                that.appendMediasInModal(medias);
-                that.UI.modalAttachMedias.find('.modal-body').on('click', 'img', function () {
-                    $(this).toggleClass('selected');
-                });
+            
+            that.UI.modalAttachMedias.find('.modal-body').on('click', 'img', function () {
+                var checkbox = that.UI.checkboxList.find('#checkbox-media-' + $(this).attr('data-id'));
+                console.log(checkbox.html());
+                checkbox.prop("checked", !checkbox.prop("checked"));
+                $(this).toggleClass('selected');
             });
+            
 
         },
         removeMedia: function (id) {
@@ -227,15 +221,7 @@ $(function () {
                 console.log(error);
             });
         },
-        getMedias: function () {
 
-            var medias = $.ajax({
-              type: "GET",
-              url: "/medias",
-            });
-
-            return medias;
-        },
         appendMediasInModal: function (medias) {
             var img,
                 media,
@@ -246,8 +232,9 @@ $(function () {
 
                 img = $('<img>')
                     .attr({
-                        'class':'img-thumbnail', 
-                        'src': '/uploads/thumbs/' + media.name
+                        'class':'img-thumbnail thumb', 
+                        'src': '/uploads/thumbs/' + media.name,
+                        'data-id': media.id
                     })
                     .appendTo(container);
             }

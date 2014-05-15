@@ -88,12 +88,20 @@ View::composer(array('posts.edit', 'posts.create'), function($view)//array('layo
 {
     $currentIdPost = Route::getCurrentRoute()->getParameter('posts');
     $tags = Tag::all();
+    $medias = Media::all();
+    
     foreach ($tags as $tag) {
         if ($tag->posts->find($currentIdPost)) {
             $tag->active = true;
         }
     }
+    foreach ($medias as $media) {
+        if ($media->posts->find($currentIdPost)) {
+            $media->active = true;
+        }
+    }
     $view->with('listTags', $tags);
+    $view->with('listMedias', $medias);
     $view->with('currentIdPost', $currentIdPost);
     $view->with('countTags', Tag::count());
     $view->with('countCategories', Category::count());

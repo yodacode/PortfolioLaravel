@@ -24,9 +24,15 @@
 				{{ Form::label('url', 'URL') }}
 				{{ Form::text('url', null, array('class' => 'form-control')) }}
 			</div>
-			<div class="form-group hidden app-list-checkbox">
+			<div class="form-group hidden app-tags-checkbox">
 				@foreach ($listTags as $tag)
 					{{ Form::checkbox('tag[]', $tag->id, $tag->active, array('id' => 'checkbox-'.$tag->id) ) }}
+				@endforeach
+			</div>			
+			<div class="form-group hidden app-medias-checkbox">
+				@foreach ($listMedias as $media)
+					{{$media->id}}
+					{{ Form::checkbox('media[]', $media->id, $media->active, array('id' => 'checkbox-media-'.$media->id) ) }}
 				@endforeach
 			</div>
 			<div class="form-group">
