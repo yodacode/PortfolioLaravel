@@ -170,6 +170,7 @@ $(function () {
             this.UI.modalAttachMedias = $('#attachMedias');
             this.UI.checkboxList = $('.app-medias-checkbox');
             this.UI.listMediasThumbs = $('.app-list-medias-thumb');
+            this.UI.btnSave = $('.app-save-attach');
             this.bind();
 
         },
@@ -200,15 +201,16 @@ $(function () {
                 that.removeMedia($(this).attr('data-id'))
             });
 
-            that.UI.modalAttachMedias.on('hidden.bs.modal', function (e) {
+            this.UI.btnSave.on('click', function (e) {
                 that.UI.listMediasThumbs.empty();
-                $(this).find('img').each(function () {
+                that.UI.modalAttachMedias.find('img').each(function () {
                     var cloneImg;
                     if ($(this).hasClass('selected')) {
                         cloneImg = $(this).clone();
                         that.UI.listMediasThumbs.append(cloneImg);
                     }
-                })
+                });
+                that.UI.modalAttachMedias.modal('hide');
             });
 
             that.UI.modalAttachMedias.find('.modal-body').on('click', 'img', function () {
