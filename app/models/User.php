@@ -25,5 +25,20 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 			return $this->email;
 		}
 
+		public function getRememberToken()
+		{
+		    return $this->rememberToken;
+		}
+
+		public function setRememberToken($value)
+		{
+		    $this->rememberToken = $value;
+		}
+
+		public function getRememberTokenName()
+		{
+		    return 'remember_token';
+		}
+
 	}
  ?>
