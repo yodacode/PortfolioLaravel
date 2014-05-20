@@ -18,7 +18,7 @@ class MediasController extends BaseController {
 
 		$medias = Media::all();
 		$this->layout->content = View::make('medias.index')->with('medias', $medias);
-		
+
 	}
 
 	public function postUpload()
@@ -35,11 +35,16 @@ class MediasController extends BaseController {
 			$pathThumb = public_path('uploads/thumbs/' . $filename);
 
 			$img = Image::make($image->getRealPath());
-			$img->resize(500, null, true);
+
+			$img->resize(500, null, function ($constraint) {
+			    $constraint->aspectRatio();
+			});
 			$img->save($path);
 
 			$imgThumb = Image::make($image->getRealPath());
-			$imgThumb->resize(150, null, true);
+			$imgThumb->resize(150, null, function ($constraint) {
+			    $constraint->aspectRatio();
+			});
 			$imgThumb->save($pathThumb);
 
 	     	$media = new Media;
@@ -127,7 +132,7 @@ class MediasController extends BaseController {
 			$media = Media::find($id);
 			$media->delete();
 			return Redirect::to('medias');
-			
+
 		}
 	}
 
