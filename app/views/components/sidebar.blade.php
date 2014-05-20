@@ -26,13 +26,13 @@
             <form class="app-form-categories">
                 <button class="btn btn-block btn-sm" data-toggle="modal" data-target="#attachMedias">Link medias</button>
             </form>
-            @foreach ($listMedias as $media)
-                @if ($media->active)
-                    <a href="#" data-id="{{$media->id}}">
-                       <img src="/uploads/thumbs/{{$media->name}}" class="img-thumbnail thumb"> 
-                    </a>
-                @endif
-            @endforeach
+            <div class="app-list-medias-thumb">
+                @foreach ($listMedias as $media)
+                    @if ($media->active)                    
+                       <img src="/uploads/thumbs/{{$media->name}}" class="img-thumbnail thumb" data-id="{{$media->id}}"/>                         
+                    @endif
+                @endforeach
+            </div>
         </li>
 
     </ul>
@@ -56,8 +56,7 @@
                     @endforeach
                 </div>
                 <div class="modal-footer">            
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>                    
                 </div>
             </div>
         </div>

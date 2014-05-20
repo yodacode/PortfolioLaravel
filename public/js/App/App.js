@@ -169,6 +169,7 @@ $(function () {
             this.UI.gallery = $('.gallery');
             this.UI.modalAttachMedias = $('#attachMedias');
             this.UI.checkboxList = $('.app-medias-checkbox');
+            this.UI.listMediasThumbs = $('.app-list-medias-thumb');
             this.bind();
 
         },
@@ -198,14 +199,24 @@ $(function () {
                 that.UI.gallery.masonry();
                 that.removeMedia($(this).attr('data-id'))
             });
-            
+
+            that.UI.modalAttachMedias.on('hidden.bs.modal', function (e) {
+                that.UI.listMediasThumbs.empty();
+                $(this).find('img').each(function () {
+                    var cloneImg;
+                    if ($(this).hasClass('selected')) {
+                        cloneImg = $(this).clone();
+                        that.UI.listMediasThumbs.append(cloneImg);
+                    }
+                })
+            });
+
             that.UI.modalAttachMedias.find('.modal-body').on('click', 'img', function () {
                 var checkbox = that.UI.checkboxList.find('#checkbox-media-' + $(this).attr('data-id'));
-                console.log(checkbox.html());
                 checkbox.prop("checked", !checkbox.prop("checked"));
                 $(this).toggleClass('selected');
             });
-            
+
 
         },
         removeMedia: function (id) {
@@ -228,11 +239,11 @@ $(function () {
                 container = this.UI.modalAttachMedias.find('.modal-body');
 
             for (var i in medias) {
-                media = medias[i];                
+                media = medias[i];
 
                 img = $('<img>')
                     .attr({
-                        'class':'img-thumbnail thumb', 
+                        'class':'img-thumbnail thumb',
                         'src': '/uploads/thumbs/' + media.name,
                         'data-id': media.id
                     })
