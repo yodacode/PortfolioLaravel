@@ -11,29 +11,36 @@
 |
 */
 
+Route::group(array('before' => 'auth'), function()
+{
+    Route::resource('posts', 'PostsController');          
+
+    //Tags
+    Route::get('tags/', 'TagsController@index');
+    Route::get('tags/{id}/destroy', 'TagsController@destroy');
+    Route::post('tags/store', 'TagsController@store');
+
+    //Categories
+    Route::get('categories/', 'CategoriesController@index');
+    Route::get('categories/{id}/destroy', 'CategoriesController@destroy');
+    Route::post('categories/store', 'CategoriesController@store');
+
+    //Posts
+    Route::get('posts/{id}/destroy', 'PostsController@destroy');
+
+    //Medias
+    Route::get('medias/', 'MediasController@index');
+    Route::get('medias/{id}/destroy', 'MediasController@destroy');
+    Route::post('medias/destroy', 'MediasController@destroy');
+    Route::post('medias/upload', 'MediasController@postUpload');
+
+});
+
+
 
 Route::controller('users', 'UsersController');
 
-Route::resource('posts', 'PostsController');
-Route::resource('medias', 'MediasController');
-Route::resource('tags', 'TagsController');
-Route::resource('categories', 'CategoriesController');
 
-//Tags
-Route::get('tags/{id}/destroy', 'TagsController@destroy');
-Route::post('tags/store', 'TagsController@store');
-
-//Categories
-Route::get('categories/{id}/destroy', 'CategoriesController@destroy');
-Route::post('categories/store', 'CategoriesController@store');
-
-//Posts
-Route::get('posts/{id}/destroy', 'PostsController@destroy');
-
-//Medias
-Route::get('medias/{id}/destroy', 'MediasController@destroy');
-Route::post('medias/destroy', 'MediasController@destroy');
-Route::post('medias/upload', 'MediasController@postUpload');
 
 
 
