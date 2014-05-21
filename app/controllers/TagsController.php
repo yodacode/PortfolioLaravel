@@ -39,7 +39,7 @@ class TagsController extends BaseController {
 	    {
 	        $validator = Validator::make(Input::all(), Tag::$rules);
 	        if ($validator->fails()) {
-	        	return Response::json(['response' => 'error']);
+	        	return Response::json(array('response' => 'error'));
 	        } else {
 	        	$tag = new Tag;
 	        	$tag->title = Input::get('title');
