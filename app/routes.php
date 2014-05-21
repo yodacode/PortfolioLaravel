@@ -36,9 +36,9 @@ Route::group(array('before' => 'auth'), function()
 
 });
 
-
-
 Route::controller('users', 'UsersController');
+
+Route::get('/', 'HomeController@index');
 
 
 

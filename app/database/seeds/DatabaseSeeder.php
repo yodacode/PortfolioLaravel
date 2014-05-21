@@ -26,11 +26,22 @@ class PortfolioAppSeeder extends Seeder {
 	public function run() {
 
 		// clear our database ------------------------------------------
+		DB::table('users')->delete();
 		DB::table('posts')->delete();
 		DB::table('categories')->delete();
 		DB::table('tags')->delete();
 		DB::table('posts_tags')->delete();
 
+		// seed our users table ---------------------
+		$user = User::create(array(
+			'firstname' => 'benjamin',
+			'lastname' 	=> 'root',
+			'email'  	=> 'benjamin.devaublanc@root.com',
+			'password' 	=> Hash::make('root'),
+			
+		));
+		$this->command->info('Users seeds finish');
+		
 		// seed our categories table ---------------------
 		$webdesign = Category::create(array(
 			'title'    => 'webdesign',			

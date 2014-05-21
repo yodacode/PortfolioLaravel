@@ -1,7 +1,7 @@
 <?php
 class UsersController extends BaseController {
 
-    protected $layout = "layouts.master";
+    protected $layout = "layouts.public";
 
     public function __construct() {
         $this->beforeFilter('csrf', array('on'=>'post'));

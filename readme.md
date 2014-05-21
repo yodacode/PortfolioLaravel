@@ -25,3 +25,10 @@ php artisan migrate
 ````
 php artisan db:seed
 ````
+
+**Connection to the application**
+	
+````
+email: benjamin.devaublanc@root.com
+password: root
+````

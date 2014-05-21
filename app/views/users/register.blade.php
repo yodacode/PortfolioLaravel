@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.public')
 @section('content')
 <div class="page-header">
     <h1>Register</h1>
