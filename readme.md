@@ -20,6 +20,12 @@ composer update
 php artisan migrate
 ````
 
+**Reset the database**
+
+````
+php artisan migrate:reset
+````
+
 **If you want to populate the database with datas for test**
 	
 ````
