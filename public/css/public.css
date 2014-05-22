@@ -1,0 +1,185 @@
+/*
+|--------------------------------------------------------------------------
+| Home
+|--------------------------------------------------------------------------
+*/
+
+
+/******Navbar******/
+.navbar {
+	margin-bottom: 0px;
+    border-bottom: solid 1px #ebebeb;
+}
+.navbar .icon-bar {
+	background: #2C3E50;
+}
+.navbar a {
+	color: #2C3E50;
+}
+.navbar a:hover {
+	background: #FFF;
+}
+.dropdown-menu {
+    box-shadow: none;
+    border-top: none;
+}
+/******Band******/
+.band {
+    width: 100%;
+    padding: 30px 0px 30px 0px;
+    background-color: #ebebeb;
+    background-image: url(../img/grid.png);
+}
+
+.band .yoda {
+    margin-left: 20%;
+}
+
+.band ul {
+    padding: 0px;
+}
+.band li {
+    background: #FFF;
+    display: inline-block;
+    font-size: 2em;
+    margin-bottom: 4px;
+    padding: 0px 5px 0px 5px;
+}
+
+.band li h1 {
+    margin: 0px;
+}
+
+#mainButton {
+    margin-top: 15px;
+    margin-left: 50%;
+    text-align: left;
+}
+
+#mainButton h2 {
+    font-size: 1em;
+    margin: 0px;
+    text-transform: uppercase;
+}
+
+#mainButton p {
+    font-size: 0.7em;
+    margin: 0px;
+}
+
+#mainButton .arrow {
+    margin: 10px 0px 0px 20px;
+}
+/******Slice******/
+.slice {
+    background: none repeat scroll 0% 0% #FFF;
+    border-radius: 11px;
+    border: 1px solid #D7D7D7;
+    margin: 15px 30px 15px 30px;
+
+}
+
+.slice h3 {
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+.slice ul {
+    padding: 0px;
+}
+
+.slice li {
+    display: block;
+    border-bottom: 1px dashed #D5D5D5;
+    height: 40px;
+    line-height: 37px;
+    text-indent: 60px;
+    background-position: 10px 5px;
+    background-repeat: no-repeat;
+}
+
+.slice a {
+    color: #2C3E50;
+}
+.slice a:hover {
+    text-decoration: none;
+}
+
+li:last-child {
+    border: none;
+}
+
+li.laravel {
+    background-image: url(../img/icons/icon-laravel.jpg);
+}
+
+li.php {
+    background-image: url(../img/icons/icon-php.jpg);
+}
+
+li.mysql {
+    background-image: url(../img/icons/icon-mysql.jpg);
+}
+
+li.cake {
+    background-image: url(../img/icons/icon-cake.png);
+}
+
+li.js {
+    background-image: url(../img/icons/icon-js.jpg);
+}
+
+li.jquery {
+    background-image: url(../img/icons/icon-jquery.jpg);
+}
+
+li.angular {
+    background-image: url(../img/icons/icon-angular.jpg);
+}
+
+li.html5 {
+    background-image: url(../img/icons/icon-html5.png);
+}
+
+li.git {
+    background-image: url(../img/icons/icon-git.png);
+}
+
+li.svn {
+    background-image: url(../img/icons/icon-svn.png);
+}
+
+li.psd {
+    background-image: url(../img/icons/icon-psd.jpg);
+}
+
+li.github {
+    background-image: url(../img/icons/icon-github.jpg);
+}
+
+.intro {
+    margin-top: 40px;
+}
+
+.intro img {
+    width: 50%;
+    margin: 0 25% 0 25%;
+    opacity: 0.3;
+}
+/******Footer******/
+.footer {
+    background: #2C3E50;
+    min-height: 150px;
+    margin-top: 50px;
+    color:#FFF;
+    padding: 30px 0px 30px 0px;
+}
+
+.footer ul {
+    list-style:none;
+    padding: 0px;
+}
+
+.footer a {
+    color: #FFF;
+}

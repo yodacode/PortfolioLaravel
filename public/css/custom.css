@@ -1,6 +1,7 @@
 li {
     list-style: none;
 }
+
 /******Tags******/
 #sidebar .label {
     display: inline-block;
@@ -50,7 +51,7 @@ li {
 img.thumb {
     width: 50px;
     height: 50px;
-    margin: 3px;
+    margin: 2px;
 }
 
 .overlay h2, .overlay p {

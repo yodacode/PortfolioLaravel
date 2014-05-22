@@ -1,16 +1,17 @@
 @extends('layouts.public')
 @section('content')
+<section class="container">
 <div class="page-header">
     <h1>Register</h1>
 </div>
-<div class="row">
-    <div class="col-md-6">
+
+    <div class="col-md-3">
         <ul>
             @foreach($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
         </ul>
-        <div class="col-md-6">
+        
             {{ Form::open(array('url'=>'users/create', 'class'=>'form-signup')) }}
                 <div class="form-group">
                     {{ Form::text('firstname', null, array('class'=>'form-control', 'placeholder'=>'First Name')) }}
@@ -28,9 +29,10 @@
                     {{ Form::password('password_confirmation', array('class'=>'form-control', 'placeholder'=>'Confirm Password')) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::submit('Register', array('class'=>'btn btn-large btn-primary btn-block'))}}
+                    {{ Form::submit('Register', array('class'=>'btn btn-large btn-primary'))}}
                 </div>
             {{ Form::close() }}
         </div>
-    </div>
+    
+<section class="container">
 @stop
